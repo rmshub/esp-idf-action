@@ -1,0 +1,19 @@
+name: 'ESP-IDF tools installer'
+author: 'rmshub'
+description: 'GitHub action to install ESP-IDF tools for building esp-idf projects'
+
+branding:
+  icon: 'box'
+  color: 'orange'
+
+inputs:
+  esp_idf_version:
+    description: 'ESP-IDF version'
+    required: false
+    default: 'v4.3'
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/install.sh ${{ inputs.esp_idf_version }}
+      shell: bash
