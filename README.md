@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install ESP-IDF tools
-        run: rmshub/esp-idf-action@v1
+        uses: rmshub/esp-idf-action@v1
         with: 
             esp_idf_version: 'v4.3'
 

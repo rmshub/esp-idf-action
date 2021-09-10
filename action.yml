@@ -15,5 +15,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/install.sh ${{ inputs.esp_idf_version }}
+    - run: sh ${{ github.action_path }}/install.sh ${{ inputs.esp_idf_version }}
       shell: bash
