@@ -1,4 +1,4 @@
-name: 'ESP-IDF tools installer'
+name: 'ESP-IDF Project Build'
 author: 'rmshub'
 description: 'GitHub action to install ESP-IDF tools for building esp-idf projects'
 
