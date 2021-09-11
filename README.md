@@ -1,6 +1,6 @@
 # esp-idf-action
 
-GitHub action to build ESP-IDF project using esp-idf framework. This action downloads the required ESP-IDF from espressif server and from github for latest branch
+GitHub action to build ESP-IDF project using esp-idf framework. This action downloads the required ESP-IDF from espressif server and from github for latest branch. `v2` introduced cache esp-idf and its tools based on esp-idf version
 
 The `esp_idf_version` as follows
 - `latest` (master branch)
@@ -33,22 +33,12 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-
-      - name: Install ESP-IDF tools
-        uses: rmshub/esp-idf-action@v1
+      - name: Install ESP-IDF and Build project
+        uses: rmshub/esp-idf-action@v2
         with: 
             esp_idf_version: 'v4.3'
+            esp_idf_target: 'esp32'
 
-      - name: Build the repository
-        run: |
-          source ~/esp/esp-idf/export.sh
-          idf.py set-target esp32
-          idf.py build
-      
       - name: Archive build output artifacts
         uses: actions/upload-artifact@v2
         with:
