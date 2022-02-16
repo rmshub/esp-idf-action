@@ -36,7 +36,7 @@ jobs:
       - name: Install ESP-IDF and Build project
         uses: rmshub/esp-idf-action@v3
         with: 
-            esp_idf_version: 'v4.3'
+            esp_idf_version: 'v4.4'
             esp_idf_target: 'esp32'
 
       - name: Archive build output artifacts
@@ -51,7 +51,7 @@ jobs:
 
 ## Test
 
-Currently this action verified with esp-idf v4.3
+Currently this action verified with esp-idf v4.4
 
 ## License
 

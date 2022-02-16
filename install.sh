@@ -25,8 +25,8 @@ case $esp_idf_version in
         git clone --recursive https://github.com/espressif/esp-idf.git
         ;;
     *)
-        # Clone esp idf repository
-        wget https://dl.espressif.com/dl/esp-idf/releases/esp-idf-$esp_idf_version.zip
+        # Download esp idf repository
+        wget https://dl.espressif.com/github_assets/espressif/esp-idf/releases/download/$esp_idf_version/esp-idf-$esp_idf_version.zip
 
         # Extract the files and rename folder
         unzip -q esp-idf-$esp_idf_version.zip && mv esp-idf-$esp_idf_version esp-idf
