@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
       - name: Install ESP-IDF and Build project
-        uses: rmshub/esp-idf-action@v3
+        uses: rmshub/esp-idf-action@v4
         with: 
             esp_idf_version: 'v4.4'
             esp_idf_target: 'esp32'
