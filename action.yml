@@ -18,7 +18,7 @@ inputs:
   submodules:
     description: 'Whether to checkout submodules: true to checkout submodules or recursive'
     required: false
-    default: false
+    default: true
   esp_idf_version:
     description: 'ESP-IDF version'
     required: false
