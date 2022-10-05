@@ -24,6 +24,9 @@ case $esp_idf_version in
         # Clone esp idf master branch repository
         git clone --recursive https://github.com/espressif/esp-idf.git
         ;;
+    *release*)
+        git clone --recursive --depth=1 --shallow-submodules -b $esp_idf_version https://github.com/espressif/esp-idf.git
+        ;;
     *)
         # Download esp idf repository
         wget https://dl.espressif.com/github_assets/espressif/esp-idf/releases/download/$esp_idf_version/esp-idf-$esp_idf_version.zip
