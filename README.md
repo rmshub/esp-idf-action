@@ -34,13 +34,13 @@ jobs:
     runs-on: ubuntu-latest
 
       - name: Install ESP-IDF and Build project
-        uses: rmshub/esp-idf-action@v4
+        uses: rmshub/esp-idf-action@v5
         with: 
-            esp_idf_version: v4.4
+            esp_idf_version: v4.4.4
             esp_idf_target: esp32
 
       - name: Archive build output artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build
           path: |
@@ -51,7 +51,7 @@ jobs:
 
 ## Test
 
-Currently this action verified with esp-idf v4.4
+Currently this action verified with esp-idf v4.4.4
 
 ## License
 
