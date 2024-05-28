@@ -33,6 +33,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
       - name: Install ESP-IDF and Build project
         uses: rmshub/esp-idf-action@v5
         with: 
