@@ -36,10 +36,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install ESP-IDF and Build project
-        uses: rmshub/esp-idf-action@v5
+        uses: domimartinglogi/esp-idf-action@main
         with: 
-            esp_idf_version: v4.4.4
+            esp_idf_tag: v5.1
             esp_idf_target: esp32
+            build: true
 
       - name: Archive build output artifacts
         uses: actions/upload-artifact@v3
@@ -50,6 +51,18 @@ jobs:
             build/partition_table/partition-table.bin
             build/${{ github.event.repository.name }}.bin
 ```
+
+## Inputs
+
+| Input | Description | Default |
+|-------|-------------|---------|
+| fetch-depth | Number of Commits to fetch, 0 for the entire history| 1 |
+| token | Personal access token (PAT) used to fetch the repository | ${{ github.token }} |
+| submodules | Whether to checkout submodules: true to checkout submodules or recursive | true |
+| esp_idf_repo | Sets the source repository from which the ESP-IDF Version is pulled. | 'https://github.com/espressif/esp-idf.git'
+| esp_idf_tag | 'Tag of the Version to be downloaded' | 'v5.2' |
+| esp_idf_target | Sets the target (chip) for which the idf is to be installed | 'esp32' |
+| build | Defines if the Project should be built | false | 
 
 ## Test
 

@@ -19,14 +19,22 @@ inputs:
     description: 'Whether to checkout submodules: true to checkout submodules or recursive'
     required: false
     default: true
-  esp_idf_version:
-    description: 'ESP-IDF version'
+  esp_idf_tag:
+    description: 'Tag of the Version to be downloaded'
     required: false
-    default: 'v4.3'
+    default: 'v5.2'
   esp_idf_target:
     description: 'Sets the target (chip) for which the project is built'
     required: false
     default: 'esp32'
+  esp_idf_repo:
+    description: 'Sets the source repository from which the ESP-IDF Version is pulled.'
+    required: false
+    default: 'https://github.com/espressif/esp-idf.git'
+  build:
+    description: 'Defines if the Project should be built'
+    required: false
+    default: false
 
 runs:
   using: "composite"
@@ -45,19 +53,22 @@ runs:
         path: |
           ~/esp/esp-idf
           ~/.espressif
-        key: ${{ runner.os }}-esp-${{ inputs.esp_idf_version }}
+        key: ${{ runner.os }}-esp-${{ inputs.esp_idf_tag }}
 
     - run: |
         if echo ${{ steps.esp-idf-cache.outputs.cache-hit }} | grep -c "true"
         then 
           echo "Cache hit - skipping dependency installation"
         else
-          sh ${{ github.action_path }}/install.sh ${{ inputs.esp_idf_version }}
+          sh ${{ github.action_path }}/install.sh ${{ inputs.esp_idf_tag }} ${{ inputs.esp_idf_repo}}
         fi
       shell: bash
 
     - run: |
-        source ~/esp/esp-idf/export.sh
-        idf.py set-target ${{ inputs.esp_idf_target }}
-        idf.py build
+        if echo ${{ inputs.build }}
+        then
+          source ~/esp/esp-idf/export.sh
+          idf.py set-target ${{ inputs.esp_idf_target }}
+          idf.py build
+        fi
       shell: bash
