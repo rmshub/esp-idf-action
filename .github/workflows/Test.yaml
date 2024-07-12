@@ -1,0 +1,38 @@
+# This is a Test esp idf workflow to test if this Action works
+
+name: Build and Artifact the ESP-IDF Project
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on tag create like v1.0, v2.0.0 and so on
+  pull_request:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Install ESP-IDF and Build project
+        uses: domimartinglogi/esp-idf-action@v1.1
+        with: 
+            esp_idf_tag: v5.1
+            esp_idf_target: esp32
+            build: false
+
+      - name: Archive build output artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: |
+            build/bootloader/bootloader.bin
+            build/partition_table/partition-table.bin
+            build/${{ github.event.repository.name }}.bin
