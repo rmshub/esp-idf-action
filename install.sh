@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # esp idf repository version
-esp_idf_version="$1"
+esp_idf_tag="$1"
+esp_idf_repo ="$2"
 
 # Installing prerequisites
 echo "## Install prerequisites"
@@ -19,23 +20,9 @@ cd ~/esp
 
 echo "## Download esp-idf repository"
 
-case $esp_idf_version in
-    latest)
-        # Clone esp idf master branch repository
-        git clone --recursive https://github.com/espressif/esp-idf.git
-        ;;
-    *release*)
-        git clone --recursive --depth=1 --shallow-submodules -b $esp_idf_version https://github.com/espressif/esp-idf.git
-        ;;
-    *)
-        # Download esp idf repository
-        wget https://dl.espressif.com/github_assets/espressif/esp-idf/releases/download/$esp_idf_version/esp-idf-$esp_idf_version.zip
+git clone --recursive "$esp_idf_repo"
+git checkout "$esp_idf_tag"
 
-        # Extract the files and rename folder
-        unzip -q esp-idf-$esp_idf_version.zip && mv esp-idf-$esp_idf_version esp-idf
-        rm -f esp-idf-$esp_idf_version.zip
-        ;;
-esac
 
 # Navigate to esp idf repository
 cd ~/esp/esp-idf
