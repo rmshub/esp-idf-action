@@ -36,7 +36,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install ESP-IDF and Build project
-        uses: domimartinglogi/esp-idf-action@main
+        uses: domimartinglogi/esp-idf-action@v1.1
         with: 
             esp_idf_tag: v5.1
             esp_idf_target: esp32
