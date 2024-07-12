@@ -1,10 +1,10 @@
-name: 'ESP-IDF Project Build'
-author: 'rmshub'
-description: 'GitHub action to install ESP-IDF tools for building esp-idf projects'
+name: 'ESP-IDF Downloader and Builder'
+author: 'domimartinglogi'
+description: 'GitHub action to install ESP-IDF tools for building esp-idf projects based on https://github.com/rmshub/esp-idf-action'
 
 branding:
   icon: 'box'
-  color: 'orange'
+  color: 'green'
 
 inputs:
   fetch-depth: 
