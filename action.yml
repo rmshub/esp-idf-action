@@ -32,7 +32,7 @@ runs:
   using: "composite"
   steps:
     - name: Checkout the code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: ${{ inputs.fetch-depth }}
         token: ${{ inputs.token }}
@@ -40,7 +40,7 @@ runs:
     
     - name: Cache esp-idf and its tools
       id: esp-idf-cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/esp/esp-idf
